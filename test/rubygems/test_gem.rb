@@ -1129,6 +1129,14 @@ class TestGem < Gem::TestCase
     util_restore_RUBY_VERSION
   end
 
+  def test_self_ruby_version_with_ruby3
+    util_set_RUBY_VERSION '3.0.0', 0, '95aff21468', 'ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-linux]'
+
+    assert_equal Gem::Version.new('3.0.0'), Gem.ruby_version
+  ensure
+    util_restore_RUBY_VERSION
+  end
+
   def test_self_rubygems_version
     assert_equal Gem::Version.new(Gem::VERSION), Gem.rubygems_version
   end

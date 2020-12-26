@@ -895,9 +895,9 @@ An Array (#{env.inspect}) was passed in from #{caller[3]}
     return @ruby_version if defined? @ruby_version
     version = RUBY_VERSION.dup
 
-    if defined?(RUBY_PATCHLEVEL) && RUBY_PATCHLEVEL != -1
+    if defined?(RUBY_PATCHLEVEL) && RUBY_PATCHLEVEL != -1 && RUBY_PATCHLEVEL != 0
       version << ".#{RUBY_PATCHLEVEL}"
-    elsif defined?(RUBY_DESCRIPTION)
+    elsif defined?(RUBY_DESCRIPTION) && RUBY_PATCHLEVEL != 0
       if RUBY_ENGINE == "ruby"
         desc = RUBY_DESCRIPTION[/\Aruby #{Regexp.quote(RUBY_VERSION)}([^ ]+) /, 1]
       else
